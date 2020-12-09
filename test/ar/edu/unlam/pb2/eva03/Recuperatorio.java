@@ -88,12 +88,18 @@ public class Recuperatorio {
 		argentina.agregarVehiculo(new Tanque(5, "Renault FT"));
 		argentina.agregarVehiculo(new Camion(6, "T-72"));
 		argentina.agregarVehiculo(new Camion(7, "T-72"));
-		
-		argentina.crearBatalla("San Lorenzo", TipoDeBatalla.TERRESTRE, 100.5, 20.3);
+		try {
+			argentina.crearBatalla("San Lorenzo", TipoDeBatalla.TERRESTRE, 100.5, 20.3);
 
-		assertTrue(argentina.enviarALaBatalla("San Lorenzo", 5));
-		assertTrue(argentina.enviarALaBatalla("San Lorenzo", 6));
-		assertTrue(argentina.enviarALaBatalla("San Lorenzo", 7));		
+			assertTrue(argentina.enviarALaBatalla("San Lorenzo", 5));
+			assertTrue(argentina.enviarALaBatalla("San Lorenzo", 6));
+			assertTrue(argentina.enviarALaBatalla("San Lorenzo", 7));		
+		}catch(VehiculoInexistente e) {
+			e.printStackTrace();
+		}catch(VehiculoIncompatible e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Test

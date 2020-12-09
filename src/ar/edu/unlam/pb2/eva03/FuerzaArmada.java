@@ -35,6 +35,7 @@ public class FuerzaArmada {
 		for(Vehiculo v: convoy) {
 			if(v.getId().equals(id)) {
 				vehiculo= v;
+				deseada.agregarVehiculosALaBatalla(v);
 				batallas.put(nombreBatalla, deseada);
 				return true;
 			}

@@ -4,6 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import ar.edu.unlam.pb2.eva03.enumeradores.TipoDeBatalla;
+import ar.edu.unlam.pb2.eva03.excepciones.VehiculoIncompatible;
+import ar.edu.unlam.pb2.eva03.excepciones.VehiculoInexistente;
+import ar.edu.unlam.pb2.eva03.interfaces.Acuatico;
+import ar.edu.unlam.pb2.eva03.interfaces.Terrestre;
+import ar.edu.unlam.pb2.eva03.interfaces.Volador;
+
 public class Recuperatorio {
 
 	@Test
@@ -102,12 +109,18 @@ public class Recuperatorio {
 		
 		argentina.crearBatalla("Pacifico", TipoDeBatalla.NAVAL, 200.5, 45.8);
 
+		try {
 		assertTrue(argentina.enviarALaBatalla("Pacifico", 8));
 		assertTrue(argentina.enviarALaBatalla("Pacifico", 9));
 		assertTrue(argentina.enviarALaBatalla("Pacifico", 10));		
 		assertTrue(argentina.enviarALaBatalla("Pacifico", 11));		
 		assertTrue(argentina.enviarALaBatalla("Pacifico", 12));		
 		assertTrue(argentina.enviarALaBatalla("Pacifico", 13));		
+		}catch(VehiculoInexistente e) {
+			e.printStackTrace();
+		}catch(VehiculoIncompatible e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test (expected = VehiculoIncompatible.class)
